@@ -12,23 +12,41 @@ class App extends Component {
     ],
     pageTitle: 'Выберите оператора'
   }
-changeTitleHandler () {
-  console.log('click')
+changeTitleHandler = (newTitle) => {
+  this.setState({
+    pageTitle: newTitle
+  })
+}
+
+handleInput = (event) => {
+  console.log('Изменено!!!!!!!', event.target.value)
+  this.setState ({
+    pageTitle: event.target.value
+  })
 }
   render() {
     const divStyle = {
       textAlign: 'center'
     }
 
-    const operator = this.state.operator
+    
 
     return (
       <div style={divStyle}>
         <h1>{this.state.pageTitle}</h1>
-        <button onClick ={this.changeTitleHandler}>Ololo</button>
-        <Operator name={operator[0].name}  /> 
-        <Operator name={operator[1].name}  />
-        <Operator name={operator[2].name}  />
+
+        <input type = 'text' onChange={this.handleInput} />
+
+        <button onClick ={this.changeTitleHandler.bind(this, 'Изменено!!!')}>Выбрать</button>
+        { this.state.operator.map((operator, index)=>{
+          return (
+            <Operator 
+            key ={index}
+            name ={ operator.name}
+            onChangeTitle ={()=> this.changeTitleHandler(operator.name)}
+            />
+          )
+        }) }
       </div>
     );
   }

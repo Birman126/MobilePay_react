@@ -1,5 +1,8 @@
 import React from 'react'
 
 export default props => (
-    <div>{props.name}</div>
+    <div>
+     <h1>{props.name}</h1>   
+    <button onClick={props.onChangeTitle}>Click</button>
+    </div>
 )
