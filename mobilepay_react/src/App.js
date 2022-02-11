@@ -10,43 +10,53 @@ class App extends Component {
       {name: 'Megafon'},
       {name: 'Tele2'}
     ],
-    pageTitle: 'Выберите оператора'
+    pageTitle: 'Выберите оператора',
+    showOperator: false
   }
-changeTitleHandler = (newTitle) => {
+toggleOperatorHandler = () => {
   this.setState({
-    pageTitle: newTitle
+    showOperator: !this.state.showOperator
+  })
+}
+changeTitleHandler = pageTitle => {
+  this.setState({pageTitle
   })
 }
 
-handleInput = (event) => {
-  console.log('Изменено!!!!!!!', event.target.value)
-  this.setState ({
-    pageTitle: event.target.value
-  })
-}
   render() {
     const divStyle = {
       textAlign: 'center'
     }
 
     
+let operators = null
+if (this.state.showOperator) {
+  operators = this.state.operator.map((operator, index)=>{
+  return (
+    <Operator 
+    key ={index}
+    name ={ operator.name}
+    onChangeTitle ={()=> this.changeTitleHandler(operator.name)}
+    />
+  )
+})
 
+}
     return (
       <div style={divStyle}>
         <h1>{this.state.pageTitle}</h1>
 
-        <input type = 'text' onChange={this.handleInput} />
+        
 
-        <button onClick ={this.changeTitleHandler.bind(this, 'Изменено!!!')}>Выбрать</button>
-        { this.state.operator.map((operator, index)=>{
-          return (
-            <Operator 
-            key ={index}
-            name ={ operator.name}
-            onChangeTitle ={()=> this.changeTitleHandler(operator.name)}
-            />
-          )
-        }) }
+        <button onClick ={this.toggleOperatorHandler}>Выбрать</button>
+
+        <div style= {{
+          width:'400px',
+          margin: 'auto',
+          paddingTop: '20px'
+        }}>
+          { operators}
+        </div>
       </div>
     );
   }
