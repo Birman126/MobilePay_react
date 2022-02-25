@@ -52,7 +52,7 @@ class App extends Component {
 
         <Terminal />
         <button
-        style={{marginTop:20}} 
+        style={{marginTop:2}} 
         onClick={this.toggleOperatorHandler}
         >Выбрать</button>
 
