@@ -10,6 +10,6 @@ export default props => (
         borderRadius: '5px'
     }}>
      <h1>{props.name}</h1>   
-    <button onClick={props.onChangeTitle}>Click</button>
+    <button onClick={props.onChangeTitle} >Click</button>
     </div>
 )
