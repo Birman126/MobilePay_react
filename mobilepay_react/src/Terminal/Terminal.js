@@ -1,27 +1,32 @@
 import React, { Component } from "react";
 
-export default class Terminal extends Component {
-  isValid = () => {
-    var output = "";
-    var re = /^\d[\d\(\)\ -]{4,14}\d$/;
-    var myPhone = document.getElementById("phone").value;
-    var valid = re.test(myPhone);
-    if (valid) output = "Номер телефона введен правильно!";
-    else output = "Номер телефона введен неправильно!";
-    document.getElementById("message").innerText = output;
-  };
+// export default class Terminal extends Component {
+//   isValid = () => {
+//     var output = "";
+//     var re = /^\d[\d\(\)\ -]{4,14}\d$/;
+//     var myPhone = document.getElementById("phone").value;
+//     var valid = re.test(myPhone);
+//     if (valid) output = "Номер телефона введен правильно!";
+//     else output = "Номер телефона введен неправильно!";
+//     document.getElementById("message").innerText = output;
+//   };
 
-  isValidSum = () => {
-    var sumOutput;
-    var mySum = document.getElementById("Sum").value;
-    var valid = mySum <= 1000 && mySum >= 1;
-    if (valid) sumOutput = "Сумма введена правильно!";
-    else sumOutput = "Введите сумму от 1 до 1000!";
-    document.getElementById("messageSum").innerHTML = sumOutput;
-  };
-  render() {
-    return (
-      <div>
+//   isValidSum = () => {
+//     var sumOutput;
+//     var mySum = document.getElementById("Sum").value;
+//     var valid = mySum <= 1000 && mySum >= 1;
+//     if (valid) sumOutput = "Сумма введена правильно!";
+//     else sumOutput = "Введите сумму от 1 до 1000!";
+//     document.getElementById("messageSum").innerHTML = sumOutput;
+//   };
+//   render() {
+    export default props => {
+      return (
+      <div style={{
+        border: '1px solid #ccc',
+        width: 400,
+        margin: '0 auto'
+      }}>
         <h1 id>
           Пополнение счета <div id="id_operator"></div>{" "}
         </h1>
@@ -51,4 +56,4 @@ export default class Terminal extends Component {
       </div>
     );
   }
-}
+

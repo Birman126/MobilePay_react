@@ -23,7 +23,7 @@ class App extends Component {
     this.setState({
       pageTitle,
       showOperator: !this.state.showOperator,
-      showOperator: !this.state.showTerminal,
+      showTerminal: !this.state.showTerminal,
     });
   };
 
@@ -33,7 +33,12 @@ class App extends Component {
     const divStyle = {
       textAlign: "center",
     };
-
+    let terminal = null;
+    if (this.state.showTerminal) {
+      
+        return (<Terminal />)
+    };
+  
     let operators = null;
     if (this.state.showOperator) {
       operators = this.state.operator.map((operator, index) => {
@@ -50,7 +55,7 @@ class App extends Component {
       <div style={divStyle}>
         <h1>{this.state.pageTitle}</h1>
 
-        <Terminal />
+        
         <button
         style={{marginTop:2}} 
         onClick={this.toggleOperatorHandler}
@@ -63,7 +68,8 @@ class App extends Component {
             paddingTop: "20px",
           }}
         >
-          {operators}
+          {terminal,
+          operators}
         </div>
       </div>
     );
